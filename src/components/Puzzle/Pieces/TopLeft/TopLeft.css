@@ -1,0 +1,5 @@
+/* TopLeft */
+.TopLeft {
+    background-image: -webkit-radial-gradient(50% 100%, circle, transparent 12%, #9561e2 0);
+    background-image: radial-gradient(50% 100%, circle, transparent 12%, #9561e2 0);
+}

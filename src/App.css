@@ -1,0 +1,11 @@
+ /* App */
+ @import url('https://fonts.googleapis.com/css?family=Amatic+SC|Raleway');
+ * {
+     user-select: none;
+ }
+ body {
+     font-family: 'Inconsolata', sans-serif;
+ }
+ .font-accent {
+     font-family: 'Amatic SC', cursive;
+ }

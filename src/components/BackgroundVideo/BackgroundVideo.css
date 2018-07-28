@@ -1,0 +1,11 @@
+/* BackgroundVideo */
+.BackgroundVideo > * {
+    height: 100%;
+    width: 100%;
+}
+.BackgroundVideo > .cover {
+    background-color: rgba(149, 97, 226, 0.3);
+}
+.BackgroundVideo > video {
+    object-fit: cover;
+}
