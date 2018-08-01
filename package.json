@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
+    "pearl.js": "^1.0.13",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
     "react-scripts": "1.1.4"
   },
   "scripts": {
@@ -14,7 +15,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "autoprefixer": "^9.0.1",
+    "autoprefixer": "^9.0.2",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
     "gulp-postcss": "^7.0.1",

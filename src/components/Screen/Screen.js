@@ -6,7 +6,7 @@ import Puzzle from "../Puzzle/Puzzle";
 class Screen extends Component {
     render() {
         return (
-            <div className='Screen relative w-screen h-screen flex flex-col items-center justify-center z-10'>
+            <div className='Screen absolute overflow-hidden pin flex flex-col items-center justify-center z-10'>
                 <Puzzle/>
                 <Title/>
             </div>
