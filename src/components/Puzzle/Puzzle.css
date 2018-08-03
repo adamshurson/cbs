@@ -1,6 +1,31 @@
 /* Puzzle */
 .piece {
     position: relative;
+    z-index: 10;
+}
+.piece.loaded {
+    transform: translate(0, 0) rotate3d(0, 0, 0, 0);
+}
+.piece.active.loaded {
+    transition-delay: 0.25s;
+    transform: scale(15);
+    z-index: 20;
+}
+.cover {
+    @apply .absolute .pin .opacity-0;
+    transition: opacity 0.5s ease-in-out;
+}
+.cover.active {
+    @apply .z-30 .opacity-100;
+    transition-delay: 0.75s;
+}
+.piece h3 {
+    z-index: 10;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+.piece.active h3 {
+    opacity: 0;
 }
 .piece h3 span {
     width: 0;
@@ -10,13 +35,13 @@
 .piece:hover h3 span {
     width: 100%;
 }
-@media screen and (max-height: 766px) {
+@media screen and (max-width: 766px) {
     .piece {
         width: 24vw;
         height: 24vw;
     }
 }
-@media screen and (min-height: 767px) {
+@media screen and (min-width: 767px) {
     .piece {
         width: 12vw;
         height: 12vw;

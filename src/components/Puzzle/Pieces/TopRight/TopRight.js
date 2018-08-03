@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './TopRight.css';
+import Puzzle from "../../../../pearls/puzzle";
 
 class TopRight extends Component {
     constructor() {
@@ -7,7 +7,8 @@ class TopRight extends Component {
         this.state = {
             active: false,
             loaded: ''
-        }
+        };
+        this.puzzle = new Puzzle();
     }
     componentDidMount() {
         setTimeout(() => {
@@ -15,10 +16,22 @@ class TopRight extends Component {
                 loaded: 'loaded'
             });
         }, 250);
+        this.puzzle.subscribe((puzzleState) => {
+            this.setState({
+                active: puzzleState.activePiece === 'TopRight',
+                otherActive: puzzleState.activePiece !== null && puzzleState.activePiece !== 'TopRight'
+            });
+        });
     }
+    getActiveClass() {
+        return (this.state.active ? 'active' : (this.state.otherActive ? 'otherActive' : ''));
+    }
+    setActive = () => {
+        this.puzzle.setActivePiece('TopRight');
+    };
     render() {
         return (
-            <div className={'TopRight ' + this.state.loaded + ' piece rounded-tr-lg flex justify-center items-center cursor-pointer'}>
+            <div onClick={this.setActive} className={this.state.loaded + ' ' + this.getActiveClass() + ' TopRight piece rounded-tr-lg flex items-center justify-center cursor-pointer'}>
                 <div className='puzzle-cover bg-white absolute rounded-full'/>
                 <h3 className='text-purple text-2xl md:text-4xl font-accent relative pb-1'>
                     Services

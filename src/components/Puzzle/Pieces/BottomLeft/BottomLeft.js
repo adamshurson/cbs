@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import './BottomLeft.css';
-import PieceCover from "../PieceCover/PieceCover";
 import Puzzle from "../../../../pearls/puzzle";
 
 class BottomLeft extends Component {
@@ -27,7 +25,7 @@ class BottomLeft extends Component {
         });
     }
     getActiveClass() {
-        return (this.state.active ? 'active' : '');
+        return (this.state.active ? 'active' : (this.state.otherActive ? 'otherActive' : ''));
     }
     setActive = () => {
         this.puzzle.setActivePiece('BottomLeft');
@@ -40,7 +38,6 @@ class BottomLeft extends Component {
                     Projects
                     <span className='bg-purple rounded-lg absolute pin-b pin-l pin-r'/>
                 </h3>
-                <PieceCover className={this.state.active ? 'active' : ''}/>
             </div>
         );
     }

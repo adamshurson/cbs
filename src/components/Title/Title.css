@@ -1,6 +1,6 @@
 /* Title */
 .Title {
-    transition: transform 2s ease-in-out;
+    transition: transform 1s ease-in-out;
     transition-delay: 0.5s;
     transform: translateY(100vh);
 }

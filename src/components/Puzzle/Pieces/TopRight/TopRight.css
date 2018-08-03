@@ -2,11 +2,11 @@
 .TopRight {
     background-image: -webkit-radial-gradient(circle at 0% 50%, transparent 12%, #FFFFFF 0);
     background-image: radial-gradient(circle at 0% 50%, transparent 12%, #FFFFFF 0);
-    transition: transform 2s ease-in-out;
+    transition: transform 1s ease-in-out;
     transform: translate(100vw, -100vh) rotate3d(60, 60, 60, -720deg);
 }
-.TopRight.loaded {
-    transform: translate(0, 0) rotate3d(0, 0, 0, 0);
+.TopRight.loaded.otherActive {
+    transform: translate(100vw, -100vh) rotate3d(60, 60, 60, -720deg);
 }
 .TopRight .puzzle-cover {
     width: 26%;

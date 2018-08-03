@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './BackgroundVideo.css';
 
 class BackgroundVideo extends Component {
     constructor() {

@@ -1,9 +1,11 @@
-import Pearl from 'pearl.js';
-class Puzzle extends Pearl {
+import Pearl from '@ashurson/pearljs';
+export default class Puzzle extends Pearl {
     init() {
         this.setState({activePiece: null});
     }
+    setActivePiece(activePiece) {
+        this.setState({
+            activePiece: activePiece
+        });
+    }
 }
-const p = new Puzzle();
-console.log(p);
-export default p;

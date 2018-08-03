@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './Screen.css';
 import Title from "../Title/Title";
 import Puzzle from "../Puzzle/Puzzle";
 

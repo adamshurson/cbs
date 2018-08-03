@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './TopLeft.css';
+import Puzzle from "../../../../pearls/puzzle";
+import Home from "../../../Pages/Home/Home";
 
 class TopLeft extends Component {
     constructor() {
@@ -7,7 +8,8 @@ class TopLeft extends Component {
         this.state = {
             active: false,
             loaded: ''
-        }
+        };
+        this.puzzle = new Puzzle();
     }
     componentDidMount() {
         setTimeout(() => {
@@ -15,15 +17,30 @@ class TopLeft extends Component {
                 loaded: 'loaded'
             });
         }, 250);
+        this.puzzle.subscribe((puzzleState) => {
+            this.setState({
+                active: puzzleState.activePiece === 'TopLeft',
+                otherActive: puzzleState.activePiece !== null && puzzleState.activePiece !== 'TopLeft'
+            });
+        });
     }
+    getActiveClass() {
+        return (this.state.active ? 'active' : (this.state.otherActive ? 'otherActive' : ''));
+    }
+    setActive = () => {
+        this.puzzle.setActivePiece('TopLeft');
+    };
     render() {
         return (
-            <div className={'TopLeft ' + this.state.loaded + ' piece rounded-tl-lg flex justify-center items-center cursor-pointer'}>
-                <div className='puzzle-cover bg-purple absolute rounded-full'/>
-                <h3 className='text-white text-2xl md:text-4xl font-accent relative pb-1'>
-                    Home
-                    <span className='bg-white rounded-lg absolute pin-b pin-l pin-r'/>
-                </h3>
+            <div>
+                <div onClick={this.setActive} className={this.state.loaded + ' ' + this.getActiveClass() + ' TopLeft piece rounded-tl-lg flex items-center justify-center cursor-pointer'}>
+                    <div className='puzzle-cover bg-purple absolute rounded-full'/>
+                    <h3 className='text-white text-2xl md:text-4xl font-accent relative pb-1'>
+                        Home
+                        <span className='bg-white rounded-lg absolute pin-b pin-l pin-r'/>
+                    </h3>
+                </div>
+                <Home active={this.getActiveClass()}/>
             </div>
         );
     }

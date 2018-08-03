@@ -5,12 +5,8 @@
     transition: transform 1s ease-in-out;
     transform: translate(-100vw, 100vh) rotate3d(60, 60, 60, 720deg);
 }
-.BottomLeft.loaded {
-    transform: translate(0, 0) rotate3d(0, 0, 0, 0);
-}
-.BottomLeft.active {
-    transform: scale(15);
-    z-index: 20;
+.BottomLeft.loaded.otherActive {
+    transform: translate(-100vw, 100vh) rotate3d(60, 60, 60, 720deg);
 }
 .BottomLeft .puzzle-cover {
     width: 26%;
