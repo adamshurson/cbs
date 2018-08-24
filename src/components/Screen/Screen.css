@@ -1,1 +1,4 @@
 /* Screen */
+::-webkit-scrollbar {
+    display: none;
+}

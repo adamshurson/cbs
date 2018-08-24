@@ -2,7 +2,6 @@
 .TopLeft {
     background-image: -webkit-radial-gradient(circle at 50% 100%, transparent 12%, #9561e2 0);
     background-image: radial-gradient(circle at 50% 100%, transparent 12%, #9561e2 0);
-    transition: transform 1s ease-in-out;
     transform: translate(-100vw, -100vh) rotate3d(60, 60, 60, 720deg);
 }
 .TopLeft.loaded.otherActive {

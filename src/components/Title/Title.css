@@ -7,3 +7,7 @@
 .Title.loaded {
     transform: translateY(0);
 }
+.Title.loaded.activePiece {
+    transform: translateY(100vh);
+    transition-delay: 0s;
+}

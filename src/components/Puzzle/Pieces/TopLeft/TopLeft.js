@@ -35,7 +35,7 @@ class TopLeft extends Component {
             <div>
                 <div onClick={this.setActive} className={this.state.loaded + ' ' + this.getActiveClass() + ' TopLeft piece rounded-tl-lg flex items-center justify-center cursor-pointer'}>
                     <div className='puzzle-cover bg-purple absolute rounded-full'/>
-                    <h3 className='text-white text-2xl md:text-4xl font-accent relative pb-1'>
+                    <h3 className='text-white text-2xl md:text-4xl xl:text-5xl font-accent relative pb-1'>
                         Home
                         <span className='bg-white rounded-lg absolute pin-b pin-l pin-r'/>
                     </h3>

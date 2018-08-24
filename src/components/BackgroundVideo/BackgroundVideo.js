@@ -13,7 +13,7 @@ class BackgroundVideo extends Component {
                 <video playsInline loop autoPlay muted>
                     <source src={this.state.url} type='video/mp4'/>
                 </video>
-                <div className='cover z-10 absolute'/>
+                <div className='bg-cover z-10 absolute'/>
             </div>
         );
     }

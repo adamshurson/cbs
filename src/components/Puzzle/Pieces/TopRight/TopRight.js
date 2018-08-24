@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Puzzle from "../../../../pearls/puzzle";
+import Services from "../../../Pages/Services/Services";
+import Home from "../../../Pages/Home/Home";
 
 class TopRight extends Component {
     constructor() {
@@ -31,12 +33,15 @@ class TopRight extends Component {
     };
     render() {
         return (
-            <div onClick={this.setActive} className={this.state.loaded + ' ' + this.getActiveClass() + ' TopRight piece rounded-tr-lg flex items-center justify-center cursor-pointer'}>
-                <div className='puzzle-cover bg-white absolute rounded-full'/>
-                <h3 className='text-purple text-2xl md:text-4xl font-accent relative pb-1'>
-                    Services
-                    <span className='bg-purple rounded-lg absolute pin-b pin-l pin-r'/>
-                </h3>
+            <div>
+                <div onClick={this.setActive} className={this.state.loaded + ' ' + this.getActiveClass() + ' TopRight piece rounded-tr-lg flex items-center justify-center cursor-pointer'}>
+                    <div className='puzzle-cover bg-white absolute rounded-full'/>
+                    <h3 className='text-purple text-2xl md:text-4xl xl:text-5xl font-accent relative pb-1'>
+                        Services
+                        <span className='bg-purple rounded-lg absolute pin-b pin-l pin-r'/>
+                    </h3>
+                </div>
+                <Services active={this.getActiveClass()}/>
             </div>
         );
     }

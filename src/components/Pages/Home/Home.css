@@ -1,1 +1,7 @@
 /* Home.css */
+.ImageContainer {
+    height: fit-content;
+}
+.min-h-fit-content {
+    min-height: fit-content;
+}

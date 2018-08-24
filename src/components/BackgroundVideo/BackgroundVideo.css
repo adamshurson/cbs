@@ -3,7 +3,7 @@
     height: 100%;
     width: 100%;
 }
-.BackgroundVideo > .cover {
+.BackgroundVideo > .bg-cover {
     background-color: rgba(149, 97, 226, 0.3);
 }
 .BackgroundVideo > video {

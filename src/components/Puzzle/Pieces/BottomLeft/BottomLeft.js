@@ -34,7 +34,7 @@ class BottomLeft extends Component {
         return (
             <div onClick={this.setActive} className={this.state.loaded + ' ' + this.getActiveClass() +' ' + 'BottomLeft piece rounded-bl-lg flex justify-center items-center cursor-pointer'}>
                 <div className='puzzle-cover bg-white absolute rounded-full'/>
-                <h3 className='text-purple text-2xl md:text-4xl font-accent relative pb-1'>
+                <h3 className='text-purple text-2xl md:text-4xl xl:text-5xl font-accent relative pb-1'>
                     Projects
                     <span className='bg-purple rounded-lg absolute pin-b pin-l pin-r'/>
                 </h3>
