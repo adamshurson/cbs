@@ -54,12 +54,12 @@ class Home extends Component {
                     </div>
                     <div className={'w-2/3 md:w-1/2 lg:w-1/3 self-center pt-px pb-px bg-white mt-16 rounded'}/>
                     <h2 className={'text-5xl text-white mt-12 text-center font-normal font-accent'}>Build With Us.</h2>
-                    <p className={'w-1/2 pr-4 mt-10 text-white md:text-xl self-center font-thin leading-normal text-right'}>
+                    <p className={'w-2/3 md:w-1/2 pr-4 mt-10 text-white md:text-xl self-center font-thin leading-normal text-center'}>
                         From stunning kitchens, gorgeous bathrooms, and everything in between, we will work with you to
                         deliver your wildest dreams - and beyond.
                     </p>
-                    <div className={'flex justify-center'}>
-                        <button className={'mt-12 rounded focus:outline-none text-white border-2 border-white text-white px-4 py-2 min-h-fit-content mb-12'}>Contact Us</button>
+                    <div className={'flex justify-center mb-32 pb-32 lg:mb-0 lg:pb-0'}>
+                        <button className={'mt-12 rounded focus:outline-none text-white border-2 border-white text-white px-4 py-2 min-h-fit-content mb-32 lg:mb-12'}>Contact Us</button>
                     </div>
                 </div>
             </div>

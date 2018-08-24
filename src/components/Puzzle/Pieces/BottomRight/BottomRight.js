@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Puzzle from '../../../../pearls/puzzle';
+import Puzzle from "../../../../pearls/puzzle";
+import Contact from "../../../Pages/Contact/Contact";
 
 class BottomRight extends Component {
     constructor() {
@@ -31,12 +32,15 @@ class BottomRight extends Component {
     };
     render() {
         return (
-            <div onClick={this.setActive} className={this.state.loaded + ' ' + this.getActiveClass() + ' BottomRight piece rounded-br-lg flex items-center justify-center cursor-pointer'}>
-                <div className='puzzle-cover bg-purple absolute rounded-full'/>
-                <h3 className='text-white text-2xl md:text-4xl xl:text-5xl font-accent relative pb-1'>
-                    Contact
-                    <span className='bg-white rounded-lg absolute pin-b pin-l pin-r'/>
-                </h3>
+            <div>
+                <div onClick={this.setActive} className={this.state.loaded + ' ' + this.getActiveClass() + ' BottomRight piece rounded-br-lg flex items-center justify-center cursor-pointer'}>
+                    <div className='puzzle-cover bg-purple absolute rounded-full'/>
+                    <h3 className='text-white text-2xl md:text-4xl xl:text-5xl font-accent relative pb-1'>
+                        Contact
+                        <span className='bg-white rounded-lg absolute pin-b pin-l pin-r'/>
+                    </h3>
+                </div>
+                <Contact active={this.getActiveClass()}/>
             </div>
         );
     }

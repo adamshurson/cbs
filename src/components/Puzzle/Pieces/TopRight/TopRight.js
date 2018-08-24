@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Puzzle from "../../../../pearls/puzzle";
 import Services from "../../../Pages/Services/Services";
-import Home from "../../../Pages/Home/Home";
 
 class TopRight extends Component {
     constructor() {

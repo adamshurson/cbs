@@ -1,1 +1,7 @@
 /* Services.css */
+.swipeable {
+    transition: 1s transform ease-in-out;
+}
+.fadeUp {
+    transform: translateY(-100%);
+}

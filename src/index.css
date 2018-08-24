@@ -6497,6 +6497,12 @@ table {
   }
 }
 
+/* Screen */
+
+::-webkit-scrollbar {
+  display: none;
+}
+
 /* Title */
 
 .Title {
@@ -6522,13 +6528,21 @@ table {
           transition-delay: 0s;
 }
 
-/* Screen */
+/* Contact.css */
 
-::-webkit-scrollbar {
-  display: none;
+.ImageContainer {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
-/* Home.css */
+.min-h-fit-content {
+  min-height: -webkit-fit-content;
+  min-height: -moz-fit-content;
+  min-height: fit-content;
+}
+
+/* Contact.css */
 
 .ImageContainer {
   height: -webkit-fit-content;
@@ -6543,6 +6557,18 @@ table {
 }
 
 /* Services.css */
+
+.swipeable {
+  -webkit-transition: 1s -webkit-transform ease-in-out;
+  transition: 1s -webkit-transform ease-in-out;
+  transition: 1s transform ease-in-out;
+  transition: 1s transform ease-in-out, 1s -webkit-transform ease-in-out;
+}
+
+.fadeUp {
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+}
 
 /* BottomLeft */
 
