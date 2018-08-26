@@ -47,12 +47,12 @@ class Services extends Component {
                 startY: null,
                 distX: null,
                 distY: null
-            }
+            },
+            lastSwipeDir: "left"
         };
         this.puzzle = new Puzzle();
     }
     touchStart(evt) {
-        evt.preventDefault();
         this.setState({
             swipeDetect: {
                 swipeDir: null,
@@ -61,9 +61,6 @@ class Services extends Component {
                 startY: evt.changedTouches[0].pageY
             }
         });
-    }
-    touchMove(evt) {
-        evt.preventDefault();
     }
     touchEnd(evt) {
         this.setState({
@@ -78,16 +75,10 @@ class Services extends Component {
             } else if (Math.abs(this.state.swipeDetect.distY) >= this.swipeProps.threshold) {
                 swipeDir = (this.state.swipeDetect.distY < 0) ? 'up' : 'down';
             }
-            if (swipeDir === "right") {
-                this.setState({
-                    currentService: this.services[this.state.currentService].nextService
-                });
-                this.swipeProps.hasSwipedOnce = true;
-            } else if (swipeDir === "left") {
-                this.setState({
-                    currentService: this.services[this.state.currentService].previousService
-                });
-                this.swipeProps.hasSwipedOnce = true;
+            if (swipeDir === "left") {
+                this.swipeLeft();
+            } else if (swipeDir === "right") {
+                this.swipeRight();
             }
         });
     }
@@ -101,24 +92,75 @@ class Services extends Component {
     exit = () => {
         this.puzzle.setActivePiece(null);
     };
+    setActive(serviceKey) {
+        this.setState({
+            currentService: serviceKey
+        });
+    }
+    renderServiceDot(serviceKey) {
+        return (
+            <div key={serviceKey} onClick={() => this.setActive(serviceKey)} className={(this.state.currentService === serviceKey ? "bg-purple" : "bg-grey") + " cursor-pointer h-4 w-4 mx-2"} />
+        )
+    }
+    getServiceClass(serviceKey) {
+        if (this.state.currentService === serviceKey) {
+            return "";
+        } else {
+            return "offscreen-" + this.state.lastSwipeDir;
+        }
+    }
+    renderService(serviceKey) {
+        return (
+            <div className={this.getServiceClass(serviceKey) + " absolute pin slider flex flex-col min-h-fit-content items-center p-4 pb-12 lg:pb-4"}>
+                <h2 className={'text-5xl text-purple lg:mt-8 text-center font-normal font-accent'}>{this.services[serviceKey].name}</h2>
+                    <img className={"mt-4 w-full lg:w-2/3 xl:w-1/3 h-auto self-center"} src={this.services[serviceKey].img} alt={this.services[serviceKey].tagline} />
+                <h3 className={'text-3xl lg:text-4xl w-full lg:w-2/3 xl:w-1/3 mt-4 text-center text-purple font-normal font-accent'}>{this.services[serviceKey].tagline}</h3>
+                <p className={'text-md lg:text-lg w-full lg:w-2/3 xl:w-1/3 mt-4 text-center text-purple font-normal'}>{this.services[serviceKey].description1}</p>
+                <p className={'text-md lg:text-lg w-full lg:w-2/3 xl:w-1/3 mt-4 text-center text-purple font-normal mb-16 lg:mb-0'}>{this.services[serviceKey].description2}</p>
+            </div>
+        );
+    }
+    swipeRight() {
+        this.setState({
+            currentService: this.services[this.state.currentService].previousService,
+            lastSwipeDir: "right"
+        });
+        this.swipeProps.hasSwipedOnce = true;
+    }
+    swipeLeft() {
+        this.setState({
+            currentService: this.services[this.state.currentService].nextService,
+            lastSwipeDir: "left"
+        });
+        this.swipeProps.hasSwipedOnce = true;
+    }
     render() {
         return (
             <div className={'Services cover bg-white flex flex-col ' + this.state.active}>
-                <div className={'flex items-center p-4'}>
+                <div className={'flex items-center p-4 z-40'}>
                     <h1 className={'text-4xl text-purple border-b-4 border-purple font-accent'}>Services</h1>
                     <FontAwesomeIcon onClick={this.exit} className={'ml-auto fa-2x cursor-pointer text-purple'} icon={'times'}/>
                 </div>
-                <div className={(this.swipeProps.hasSwipedOnce ? "fadeUp" : "") + " swipeable lg:hidden absolute flex pin-t pin-l pin-r p-8 bg-grey-darkest text-white text-center"}>
-                    <FontAwesomeIcon icon={"arrow-left"}/>
-                    <span className={"flex-1"}>Swipe to see more!</span>
-                    <FontAwesomeIcon className={"ml-auto"} icon={"arrow-right"}/>
+                <div className={(this.swipeProps.hasSwipedOnce ? "fadeDown" : "") + " z-50 items-center fixed flex lg:hidden pin-b pin-l pin-r p-8 bg-purple text-white text-center"}>
+                    <FontAwesomeIcon className={"fa-2x"} icon={"angle-left"}/>
+                    <span className={"flex-1 text-xl lg:hidden"}>Swipe to see more!</span>
+                    <FontAwesomeIcon className={"ml-auto fa-2x"} icon={"angle-right"}/>
                 </div>
-                <div onTouchStart={(evt) => this.touchStart(evt)} onTouchMove={(evt) => this.touchMove(evt)} onTouchEnd={(evt) => this.touchEnd(evt)} className={'flex flex-col flex-1 items-center overflow-auto p-4'}>
-                    <h2 className={'text-5xl text-purple lg:mt-8 text-center font-normal font-accent'}>{this.services[this.state.currentService].name}</h2>
-                    <img className={"mt-4 w-full lg:w-2/3 xl:w-1/3 h-auto self-center"} src={this.services[this.state.currentService].img} alt={this.services[this.state.currentService].tagline} />
-                    <h3 className={'text-3xl lg:text-4xl w-full lg:w-2/3 xl:w-1/3 mt-4 text-center text-purple font-normal font-accent'}>{this.services[this.state.currentService].tagline}</h3>
-                    <p className={'text-md lg:text-lg w-full lg:w-2/3 xl:w-1/3 mt-4 text-center text-purple font-normal'}>{this.services[this.state.currentService].description1}</p>
-                    <p className={'text-md lg:text-lg w-full lg:w-2/3 xl:w-1/3 mt-4 text-center text-purple font-normal'}>{this.services[this.state.currentService].description2}</p>
+                <div className={"absolute z-10 pin-t pin-b pin-l hidden lg:flex items-center justify-center px-12 text-purple cursor-pointer"} onClick={() => this.swipeRight()}>
+                    <FontAwesomeIcon className={"fa-3x"} icon={"angle-left"}/>
+                </div>
+                <div className={"absolute z-10 pin-t pin-b pin-r hidden lg:flex items-center justify-center px-12 text-purple cursor-pointer"} onClick={() => this.swipeLeft()}>
+                    <FontAwesomeIcon className={"fa-3x"} icon={"angle-right"}/>
+                </div>
+                <div onTouchStart={(evt) => this.touchStart(evt)} onTouchEnd={(evt) => this.touchEnd(evt)} className={'relative flex-1 overflow-x-hidden overflow-y-scroll'}>
+                    {
+                        Object.keys(this.services).map( serviceKey => this.renderService(serviceKey))
+                    }
+                </div>
+                <div className={"fixed pin-b pin-l pin-r p-4 lg:p-8 flex items-center justify-center bg-transparent"}>
+                    {
+                        Object.keys(this.services).map( serviceKey => this.renderServiceDot(serviceKey))
+                    }
                 </div>
             </div>
         );

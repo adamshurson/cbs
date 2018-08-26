@@ -9,6 +9,3 @@
  .font-accent {
      font-family: 'Amatic SC', cursive;
  }
- body {
-     touch-action: none;
- }

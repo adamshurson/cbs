@@ -1,7 +1,18 @@
 /* Services.css */
-.swipeable {
-    transition: 1s transform ease-in-out;
-}
 .fadeUp {
     transform: translateY(-100%);
+    transition: 1s transform ease-in-out;
+}
+.fadeDown {
+    transform: translateY(100%);
+    transition: 1s transform ease-in-out;
+}
+.slider {
+    transition: 1s transform ease-in-out;
+}
+.offscreen-right {
+    transform: translateX(100vw);
+}
+.offscreen-left {
+    transform: translateX(-100vw);
 }
